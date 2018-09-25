@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -43,6 +46,8 @@ public class UIPedido extends javax.swing.JFrame {
         txt_producto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblImage_path = new java.awt.Label();
+        jLabel17 = new javax.swing.JLabel();
         tab_2 = new javax.swing.JPanel();
         btn_siguiente_2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -88,6 +93,11 @@ public class UIPedido extends javax.swing.JFrame {
         jLabel3.setText("Adjuntar foto (opcional)");
 
         btn_adjuntar.setText("o");
+        btn_adjuntar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adjuntarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Javanese Text", 1, 24)); // NOI18N
         jLabel1.setText("¡Hola! ¿Qué necesitás?");
@@ -109,9 +119,12 @@ public class UIPedido extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(lblImage_path, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_adjuntar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3)))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -124,11 +137,15 @@ public class UIPedido extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_adjuntar)
-                    .addComponent(jLabel3))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblImage_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_adjuntar)
+                        .addComponent(jLabel3)))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout tab_1Layout = new javax.swing.GroupLayout(tab_1);
@@ -149,7 +166,7 @@ public class UIPedido extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab_1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
                 .addComponent(btn_siguiente_1)
                 .addContainerGap())
         );
@@ -371,7 +388,7 @@ public class UIPedido extends javax.swing.JFrame {
                             .addGroup(tab_2Layout.createSequentialGroup()
                                 .addGap(45, 45, 45)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 384, Short.MAX_VALUE)))
+                        .addGap(0, 392, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         tab_2Layout.setVerticalGroup(
@@ -383,7 +400,7 @@ public class UIPedido extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addComponent(btn_siguiente_2)
                 .addContainerGap())
         );
@@ -397,7 +414,7 @@ public class UIPedido extends javax.swing.JFrame {
         tab_3Layout.setHorizontalGroup(
             tab_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab_3Layout.createSequentialGroup()
-                .addContainerGap(632, Short.MAX_VALUE)
+                .addContainerGap(644, Short.MAX_VALUE)
                 .addComponent(btn_confirmar)
                 .addContainerGap())
         );
@@ -464,6 +481,16 @@ this.tab_pedido.setSelectedIndex(2);        // TODO add your handling code here:
         this.cmb_minutoEntrega.setEnabled(false);
     }//GEN-LAST:event_radio_nowActionPerformed
 
+    private void btn_adjuntarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adjuntarActionPerformed
+      JFileChooser chooser=new JFileChooser();
+      chooser.showOpenDialog(null);
+      File f= chooser.getSelectedFile();
+      String filename=f.getAbsolutePath();
+      lblImage_path.setText(filename);
+      ImageIcon icon =new ImageIcon(filename);
+      jLabel17.setIcon(icon);
+    }//GEN-LAST:event_btn_adjuntarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -514,6 +541,7 @@ this.tab_pedido.setSelectedIndex(2);        // TODO add your handling code here:
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -526,6 +554,7 @@ this.tab_pedido.setSelectedIndex(2);        // TODO add your handling code here:
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private java.awt.Label lblImage_path;
     private javax.swing.JRadioButton radio_elegir;
     private javax.swing.JRadioButton radio_now;
     private javax.swing.JPanel tab_1;
