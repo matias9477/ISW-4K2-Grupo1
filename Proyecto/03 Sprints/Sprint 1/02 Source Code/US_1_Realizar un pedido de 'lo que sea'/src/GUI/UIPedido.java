@@ -5,11 +5,17 @@
  */
 package GUI;
 
+import BackEnd.GestorUS2;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import static jdk.nashorn.internal.objects.NativeJava.type;
 
 /**
  *
@@ -17,16 +23,25 @@ import javax.swing.JOptionPane;
  */
 public class UIPedido extends javax.swing.JFrame {
 
+    private GestorUS2 g;
+
     /**
      * Creates new form UIPedido
      */
-    public UIPedido() {
+    public UIPedido(GestorUS2 g) {
         initComponents();
+        this.g = g;
         this.setTitle("¡DeliverEat!");
         this.cmb_horaEntrega.setEnabled(false);
-
         this.cmb_minutoEntrega.setEnabled(false);
+        File f = new File("C:\\Users\\Matia\\Google Drive\\UTN\\INGENIERÍA DE SOFTWARE\\ISW-4K2-Grupo1\\Proyecto\\03 Sprints\\Sprint 1\\02 Source Code\\US_1_Realizar un pedido de 'lo que sea'\\src\\attatch.png");
+        String filename = f.getAbsolutePath();
+        ImageIcon icon = new ImageIcon(filename);
+        this.btn_adjuntar.setIcon(icon);
     }
+
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,6 +95,22 @@ public class UIPedido extends javax.swing.JFrame {
         txt_dptoFin = new javax.swing.JTextField();
         tab_3 = new javax.swing.JPanel();
         btn_confirmar = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        radio_efectivo = new javax.swing.JRadioButton();
+        radio_tarjeta = new javax.swing.JRadioButton();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        txt_numeroTarjeta = new javax.swing.JTextField();
+        txt_vencimientoTarjeta = new javax.swing.JTextField();
+        txt_codigoSeguridadTarjeta = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        txt_abonoEfectivo = new javax.swing.JTextField();
+        lbl_cardIco = new javax.swing.JLabel();
+        btn_validarTarjeta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,7 +123,6 @@ public class UIPedido extends javax.swing.JFrame {
 
         jLabel3.setText("Adjuntar foto (opcional)");
 
-        btn_adjuntar.setText("o");
         btn_adjuntar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_adjuntarActionPerformed(evt);
@@ -120,11 +150,10 @@ public class UIPedido extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblImage_path, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(lblImage_path, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_adjuntar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel3)))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
@@ -137,15 +166,15 @@ public class UIPedido extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_adjuntar)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblImage_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_adjuntar)
-                        .addComponent(jLabel3)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addComponent(lblImage_path, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout tab_1Layout = new javax.swing.GroupLayout(tab_1);
@@ -166,7 +195,7 @@ public class UIPedido extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab_1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 315, Short.MAX_VALUE)
                 .addComponent(btn_siguiente_1)
                 .addContainerGap())
         );
@@ -408,6 +437,124 @@ public class UIPedido extends javax.swing.JFrame {
         tab_pedido.addTab("Entrega", tab_2);
 
         btn_confirmar.setText("Confirmar");
+        btn_confirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_confirmarActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setText("Elegí el medio de pago");
+
+        radio_efectivo.setText("Efectivo");
+
+        radio_tarjeta.setText("Tarjeta");
+
+        jLabel19.setText("Número");
+
+        jLabel20.setText("Fecha de Vencimiento");
+
+        jLabel21.setText("Código de seguridad");
+
+        txt_numeroTarjeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_numeroTarjetaActionPerformed(evt);
+            }
+        });
+        txt_numeroTarjeta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_numeroTarjetaKeyTyped(evt);
+            }
+        });
+
+        jLabel22.setText("¿Con cuánto va a abobar?");
+
+        jLabel23.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel23.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel23.setText("El costo de envío es de $30");
+
+        jLabel24.setText("$");
+
+        lbl_cardIco.setText(" ");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel20)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(radio_efectivo)
+                                        .addComponent(radio_tarjeta)))
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addGap(73, 73, 73)
+                                    .addComponent(jLabel19))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(txt_numeroTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_cardIco))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txt_vencimientoTarjeta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                .addComponent(txt_codigoSeguridadTarjeta, javax.swing.GroupLayout.Alignment.LEADING))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel23))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_abonoEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel22))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(radio_efectivo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel22)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(txt_abonoEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addComponent(radio_tarjeta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(txt_numeroTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_cardIco))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(txt_vencimientoTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(txt_codigoSeguridadTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21))
+        );
+
+        btn_validarTarjeta.setText("Validar");
+        btn_validarTarjeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_validarTarjetaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tab_3Layout = new javax.swing.GroupLayout(tab_3);
         tab_3.setLayout(tab_3Layout);
@@ -417,11 +564,30 @@ public class UIPedido extends javax.swing.JFrame {
                 .addContainerGap(644, Short.MAX_VALUE)
                 .addComponent(btn_confirmar)
                 .addContainerGap())
+            .addGroup(tab_3Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(tab_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tab_3Layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_validarTarjeta))
+                    .addComponent(jLabel18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tab_3Layout.setVerticalGroup(
             tab_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab_3Layout.createSequentialGroup()
-                .addContainerGap(680, Short.MAX_VALUE)
+                .addGap(57, 57, 57)
+                .addComponent(jLabel18)
+                .addGroup(tab_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tab_3Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab_3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_validarTarjeta)
+                        .addGap(220, 220, 220)))
                 .addComponent(btn_confirmar)
                 .addContainerGap())
         );
@@ -485,52 +651,54 @@ this.tab_pedido.setSelectedIndex(2);        // TODO add your handling code here:
       JFileChooser chooser=new JFileChooser();
       chooser.showOpenDialog(null);
       File f= chooser.getSelectedFile();
+      g.setImagen(f);
       String filename=f.getAbsolutePath();
       lblImage_path.setText(filename);
       ImageIcon icon =new ImageIcon(filename);
       jLabel17.setIcon(icon);
     }//GEN-LAST:event_btn_adjuntarActionPerformed
 
+    private void txt_numeroTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_numeroTarjetaActionPerformed
+
+    }//GEN-LAST:event_txt_numeroTarjetaActionPerformed
+
+    private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
+
+    }//GEN-LAST:event_btn_confirmarActionPerformed
+
+    private void txt_numeroTarjetaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numeroTarjetaKeyTyped
+        // TODO add your handling code here:
+                String numero=this.lbl_cardIco.getText();
+
+
+    }//GEN-LAST:event_txt_numeroTarjetaKeyTyped
+
+    private void btn_validarTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validarTarjetaActionPerformed
+        try {
+            String numero=this.txt_numeroTarjeta.getText();
+            if (g.getValidador().validarTarjeta(numero)) {
+                
+                File f = new File("C:\\Users\\Matia\\Google Drive\\UTN\\INGENIERÍA DE SOFTWARE\\ISW-4K2-Grupo1\\Proyecto\\03 Sprints\\Sprint 1\\02 Source Code\\US_1_Realizar un pedido de 'lo que sea'\\src\\visa.png");
+                String filename = f.getAbsolutePath();
+                ImageIcon icon = new ImageIcon(filename);
+                this.lbl_cardIco.setIcon(icon);//es una visa
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(UIPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_validarTarjetaActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UIPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UIPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UIPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UIPedido.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UIPedido().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adjuntar;
     private javax.swing.JButton btn_confirmar;
     private javax.swing.JButton btn_siguiente_1;
     private javax.swing.JButton btn_siguiente_2;
+    private javax.swing.JButton btn_validarTarjeta;
     private javax.swing.JComboBox<String> cmb_horaEntrega;
     private javax.swing.JComboBox<String> cmb_minutoEntrega;
     private javax.swing.JLabel jLabel1;
@@ -542,7 +710,14 @@ this.tab_pedido.setSelectedIndex(2);        // TODO add your handling code here:
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -554,21 +729,29 @@ this.tab_pedido.setSelectedIndex(2);        // TODO add your handling code here:
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private java.awt.Label lblImage_path;
+    private javax.swing.JLabel lbl_cardIco;
+    private javax.swing.JRadioButton radio_efectivo;
     private javax.swing.JRadioButton radio_elegir;
     private javax.swing.JRadioButton radio_now;
+    private javax.swing.JRadioButton radio_tarjeta;
     private javax.swing.JPanel tab_1;
     private javax.swing.JPanel tab_2;
     private javax.swing.JPanel tab_3;
     private javax.swing.JTabbedPane tab_pedido;
+    private javax.swing.JTextField txt_abonoEfectivo;
     private javax.swing.JTextField txt_calleFin;
     private javax.swing.JTextField txt_calleOrigen;
+    private javax.swing.JTextField txt_codigoSeguridadTarjeta;
     private javax.swing.JTextField txt_dptoFin;
     private javax.swing.JTextField txt_dptoOrigen;
     private javax.swing.JTextField txt_numeroFin;
     private javax.swing.JTextField txt_numeroOrigen;
+    private javax.swing.JTextField txt_numeroTarjeta;
     private javax.swing.JTextField txt_pisoFin;
     private javax.swing.JTextField txt_pisoOrigen;
     private javax.swing.JTextField txt_producto;
+    private javax.swing.JTextField txt_vencimientoTarjeta;
     // End of variables declaration//GEN-END:variables
 }

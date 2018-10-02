@@ -1,3 +1,5 @@
+package BackEnd;
+
 
 
 /*
@@ -10,20 +12,16 @@
  *
  * @author Matia
  */
-public class Tarjeta {
+public class ValidadorTarjeta {
   public  final int INVALIDO          = -1;  
   public  final int VISA             = 0;
-  public  final int MASTERCARD       = 1;
-  public  final int AMERICAN_EXPRESS = 2;
 
-    public Tarjeta() {
+
+    public ValidadorTarjeta() {
     }
 
   private  final String [] cardNames = 
-      {   "Visa" , 
-          "Mastercard", 
-          "American Express", 
-
+      {   "Visa" 
       };
         
   /**
@@ -35,7 +33,7 @@ public class Tarjeta {
   public  boolean validarTarjeta(String number)
     throws Exception {   
     int CardID;
-    if ( (CardID = getCardID(number)) != -1)
+    if ( (CardID = esVisa(number)) != -1)
         return numeroValido(number);
     return false;
     }
@@ -52,7 +50,32 @@ public class Tarjeta {
      * @param number, numero de tarjeta de credito
      * @return tipo de tarjeta
    */
-  public  int getCardID(String number) {
+  
+  public boolean validateFirstFourNumbers(String number)
+  {
+       int valid = INVALIDO;
+        
+    String digit1 = number.substring(0,1);
+    String digit2 = number.substring(0,2);
+    String digit3 = number.substring(0,3);
+    String digit4 = number.substring(0,4);
+    
+    if (isNumber(number)) {
+      /* ----
+      ** VISA  prefix=4
+      ** ----  length=13 o 16  
+      */
+      if (digit1.equals("4"))  {  
+           valid = VISA;
+           return true;
+        }
+
+
+      }           
+      return false;
+      
+  }
+  public  int esVisa(String number) {
     int valid = INVALIDO;
         
     String digit1 = number.substring(0,1);
@@ -63,28 +86,14 @@ public class Tarjeta {
     if (isNumber(number)) {
       /* ----
       ** VISA  prefix=4
-      ** ----  length=13 or 16  (can be 15 too!?! maybe)
+      ** ----  length=13 o 16  
       */
       if (digit1.equals("4"))  {  
         if (number.length() == 13 || number.length() == 16) 
            valid = VISA;
         }
-      /* ----------
-      ** MASTERCARD  prefix= 51 ... 55
-      ** ----------  length= 16
-      */
-      else if (digit2.compareTo("51")>=0 && digit2.compareTo("55")<=0) {
-        if (number.length() == 16) 
-           valid = MASTERCARD;
-        }
-      /* ----
-      ** AMEX  prefix=34 or 37
-      ** ----  length=15
-      */
-      else if (digit2.equals("34") || digit2.equals("37")) {
-        if (number.length() == 15) 
-           valid = AMERICAN_EXPRESS;
-        }
+
+
       }           
       return valid;
       
