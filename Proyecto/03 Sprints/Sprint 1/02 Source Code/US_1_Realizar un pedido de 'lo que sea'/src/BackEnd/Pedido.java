@@ -12,7 +12,7 @@ import java.io.File;
  * @author Matia
  */
 public class Pedido {
-    private int ID;
+
         private String descripcion;
     private File imagen;
     private String calleOrigen;
@@ -23,26 +23,66 @@ public class Pedido {
     private String numeroCalleDestino;
     private String pisoDestino;
     private String dptoDestino;
+    private boolean entregaInmediata;
     private String horaEntrega;
     private String minutoEntrega;
     private int montoPagoEfectivo;
+    private int vueltoPagoEfectivo;
+    private boolean pagoTarjeta;
+    private int precio;
 
-    public Pedido(String descripcion, File imagen, String calleOrigen, String numeroCalleOrigen, String calleDestino, String numeroCalleDestino) {
+    public Pedido(String descripcion, String calleOrigen, String numeroCalleOrigen, String calleDestino, String numeroCalleDestino) {
         this.descripcion = descripcion;
-        this.imagen = imagen;
+
         this.calleOrigen = calleOrigen;
         this.numeroCalleOrigen = numeroCalleOrigen;
         this.calleDestino = calleDestino;
         this.numeroCalleDestino = numeroCalleDestino;
+        this.pagoTarjeta=false;
+        this.entregaInmediata=false;
     }
 
-    public int getID() {
-        return ID;
+    public int getPrecio() {
+        return precio;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
+
+    public boolean isEntregaInmediata() {
+        return entregaInmediata;
+    }
+
+    public int getVueltoPagoEfectivo() {
+        return vueltoPagoEfectivo;
+    }
+
+    public boolean isPagoTarjeta() {
+        return pagoTarjeta;
+    }
+
+    public void setEntregaInmediata(boolean entregaInmediata) {
+        this.entregaInmediata = entregaInmediata;
+    }
+
+    public void setVueltoPagoEfectivo(int vueltoPagoEfectivo) {
+        this.vueltoPagoEfectivo = vueltoPagoEfectivo;
+    }
+
+    public void setPagoTarjeta(boolean pagoTarjeta) {
+        this.pagoTarjeta = pagoTarjeta;
+    }
+    
+    
+    
+    public void marcarComoEntregaInmediata(){
+        entregaInmediata=true;
+    }
+    public void marcarComoPagado(){
+        pagoTarjeta=true;
+    }
+
 
     public String getDescripcion() {
         return descripcion;
@@ -147,6 +187,12 @@ public class Pedido {
     public void setMontoPagoEfectivo(int montoPagoEfectivo) {
         this.montoPagoEfectivo = montoPagoEfectivo;
     }
+
+    @Override
+    public String toString() {
+        return "Pedido{" + "descripcion=" + descripcion + '}';
+    }
+    
     
     
 }

@@ -114,7 +114,6 @@ this.btn_validarTarjeta.setEnabled(false);
         txt_vencimientoTarjeta = new javax.swing.JTextField();
         txt_codigoSeguridadTarjeta = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         txt_abonoEfectivo = new javax.swing.JTextField();
         lbl_cardIco = new javax.swing.JLabel();
@@ -122,9 +121,11 @@ this.btn_validarTarjeta.setEnabled(false);
         txt_nombreTitular = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         btn_validarTarjeta = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        txt_precioBien = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
+        txt_precioBien = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -493,11 +494,6 @@ this.btn_validarTarjeta.setEnabled(false);
 
         jLabel22.setText("¿Con cuánto vas a abonar?");
 
-        jLabel23.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel23.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel23.setText("El costo de envío es de $30");
-
         jLabel24.setText("$");
 
         txt_abonoEfectivo.setText("0");
@@ -526,23 +522,6 @@ this.btn_validarTarjeta.setEnabled(false);
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(radio_efectivo))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel22))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel23)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel24)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_abonoEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(radio_tarjeta))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel21)
                             .addComponent(jLabel20)
@@ -569,7 +548,24 @@ this.btn_validarTarjeta.setEnabled(false);
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                         .addGap(0, 106, Short.MAX_VALUE)
                                         .addComponent(btn_validarTarjeta))))
-                            .addComponent(txt_nombreTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_nombreTitular, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(radio_efectivo))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel22))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_abonoEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(radio_tarjeta)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -583,9 +579,7 @@ this.btn_validarTarjeta.setEnabled(false);
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_abonoEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(28, 28, 28)
                 .addComponent(radio_tarjeta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -612,9 +606,46 @@ this.btn_validarTarjeta.setEnabled(false);
         jLabel17.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
         jLabel17.setText("¿Cuánto sale lo que te vamos a llevar?");
 
+        jLabel27.setText("$");
+
         txt_precioBien.setText("0");
 
-        jLabel27.setText("$");
+        jLabel23.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel23.setFont(new java.awt.Font("Dialog", 2, 12)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel23.setText("El costo de envío es de $30");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel27)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_precioBien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel23)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel17)))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(txt_precioBien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout tab_3Layout = new javax.swing.GroupLayout(tab_3);
         tab_3.setLayout(tab_3Layout);
@@ -626,35 +657,27 @@ this.btn_validarTarjeta.setEnabled(false);
                         .addContainerGap(575, Short.MAX_VALUE)
                         .addComponent(btn_confirmar))
                     .addGroup(tab_3Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
                         .addGroup(tab_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(tab_3Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addGroup(tab_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel18)))
-                            .addGroup(tab_3Layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(jLabel27)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_precioBien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(tab_3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tab_3Layout.setVerticalGroup(
             tab_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab_3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel17)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tab_3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_precioBien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(btn_confirmar)
                 .addContainerGap())
         );
@@ -692,8 +715,10 @@ this.btn_validarTarjeta.setEnabled(false);
                     "Cuidado",
                     JOptionPane.WARNING_MESSAGE);
         }
-        else this.tab_pedido.setSelectedIndex(1);
-
+        else {
+            this.tab_pedido.setSelectedIndex(1);
+            g.setDescripcion(this.txt_producto.getText());
+        }
         
     }//GEN-LAST:event_btn_siguiente_1ActionPerformed
 
@@ -738,7 +763,40 @@ this.btn_validarTarjeta.setEnabled(false);
                 "Cuidado",
                 JOptionPane.WARNING_MESSAGE);
         }
-        else this.tab_pedido.setSelectedIndex(2);
+        else{ this.tab_pedido.setSelectedIndex(2);
+        g.setCalleOrigen(this.txt_calleOrigen.getText());
+        g.setNumeroCalleOrigen(this.txt_numeroOrigen.getText());
+            if (!"".equals(this.txt_pisoOrigen.getText())) {
+                g.setPisoOrigen(this.txt_pisoOrigen.getText());
+            }
+            if (!"".equals(this.txt_dptoOrigen.getText())) {
+                g.setDptoOrigen(this.txt_dptoOrigen.getText());
+            }
+            
+                g.setCalleDestino(this.txt_calleFin.getText());
+        g.setNumeroCalleDestino(this.txt_numeroFin.getText());
+            if (!"".equals(this.txt_pisoFin.getText())) {
+                g.setPisoDestino(this.txt_pisoFin.getText());
+            }
+            if (!"".equals(this.txt_dptoOrigen.getText())) {
+                g.setDptoDestino(this.txt_dptoFin.getText());
+            }    
+            
+            if (this.radio_now.isSelected()) {
+                g.marcarComoEntregaInmediata();
+            }
+            else {
+                g.guardarHoraEnvio(this.cmb_horaEntrega.getSelectedItem().toString(), this.cmb_minutoEntrega.getSelectedItem().toString());
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+        }
     }//GEN-LAST:event_btn_siguiente_2ActionPerformed
 
     private void btn_validarTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_validarTarjetaActionPerformed
@@ -811,6 +869,7 @@ this.btn_validarTarjeta.setEnabled(false);
         this.txt_codigoSeguridadTarjeta.setEditable(true);
         this.txt_abonoEfectivo.setEditable(false);// TODO add your handling code here:
         this.btn_validarTarjeta.setEnabled(true);
+        this.txt_abonoEfectivo.setText("");
     }//GEN-LAST:event_radio_tarjetaActionPerformed
 
     private void radio_efectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_efectivoActionPerformed
@@ -848,9 +907,15 @@ this.btn_validarTarjeta.setEnabled(false);
         if (g.isValidacionCredito() == true || g.isValidacionEfectivo() == true) {
             //registra el pedido
             if (this.radio_efectivo.isSelected()) { //si el pago es en efectivo
+                g.setMontoAPagar(Integer.parseInt(this.txt_precioBien.getText())+30);
+                g.setMontoPagoEfectivo(Integer.parseInt(this.txt_abonoEfectivo.getText()));
+                g.crearNuevoPedido();
+                
 
             } else //si es en tarjeta
             {
+                g.setMontoAPagar(Integer.parseInt(this.txt_precioBien.getText())+30);
+                g.crearNuevoPedido();
 
             }
 
@@ -908,6 +973,7 @@ this.btn_validarTarjeta.setEnabled(false);
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private java.awt.Label lblImage_path;
     private javax.swing.JLabel lbl_cardIco;
     private javax.swing.JRadioButton radio_efectivo;
