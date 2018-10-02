@@ -5,7 +5,9 @@
  */
 package GUI;
 
+import BackEnd.Almacenador;
 import BackEnd.GestorUS2;
+import BackEnd.Pedido;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -902,6 +904,8 @@ this.btn_validarTarjeta.setEnabled(false);
                         "Cuidado",
                         JOptionPane.WARNING_MESSAGE);
             }
+            g.guardar();
+            
         }
 
         if (g.isValidacionCredito() == true || g.isValidacionEfectivo() == true) {

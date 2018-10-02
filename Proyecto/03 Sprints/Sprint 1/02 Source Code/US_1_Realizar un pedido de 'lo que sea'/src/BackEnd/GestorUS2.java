@@ -33,11 +33,60 @@ public class GestorUS2 {
     private boolean validacionCredito;
     private boolean validacionEfectivo;
     private boolean entregaInmediata;
-       public GestorUS2() {
+       
+    
+    public GestorUS2() {
+        this.descripcion = "";
+        this.calleOrigen = "";
+        this.numeroCalleOrigen = "";
+        this.pisoOrigen = "";
+        this.dptoOrigen = "";
+        this.calleDestino = "";
+        this.numeroCalleDestino = "";
+        this.pisoDestino = "";
+        this.dptoDestino = "";
+        this.entregaInmediata = true;
+        this.horaEntrega = "";
+        this.minutoEntrega = "";
+        this.montoPagoEfectivo = 0;
         validador=new ValidadorTarjeta();
         entregaInmediata=false;
-
     }
+    
+    public void guardar(){
+            Almacenador.guardarArchivoTexto("Pedido.txt", this.toString());
+    }
+
+    @Override
+    public String toString() {
+        String s;
+        s = "Pedido: " + "\n"+ "\tDescripcion: " + descripcion + '\n' + 
+                "\tOrigen: \n" + 
+                "\n"+ "\t\tCalle origen: " + calleOrigen + '\n' + 
+                "\n"+ "\t\tNumero origen: " + numeroCalleOrigen + '\n' + 
+                "\n"+ "\tPis origen: " + pisoOrigen + '\n' + 
+                "\n"+ "\t\tDepto origen: " + dptoOrigen + '\n' +
+                
+                "\tDestino: \n" + 
+                "\n"+ "\t\tCalle destino: " + calleDestino + '\n' + 
+                "\n"+ "\t\tNumero destino: " + numeroCalleDestino + '\n' + 
+                "\n"+ "\t\tPis destino: " + pisoDestino + '\n' + 
+                "\n"+ "\t\tDepto destino: " + dptoDestino + '\n' +
+                
+                "\n";
+        if(!entregaInmediata){
+            s += "\n"+ "\tHora entrega: " + horaEntrega + '\n' + 
+                "\n"+ "\tMinuto entrega: " + minutoEntrega + '\n';
+        }    
+        
+//        s += "\n"+ "\tPrecio: " + precio + '\n';
+//        if(!pagoTarjeta){
+//           s += "\n"+ "\tVuelto: " + vueltoPagoEfectivo + '\n'; 
+//        }   
+        return s;       
+    }
+       
+       
         public void crearNuevoPedido(){
         pedido=new Pedido(descripcion,calleOrigen,numeroCalleOrigen,calleDestino,numeroCalleDestino);
             if (imagen!=null) {

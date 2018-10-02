@@ -31,7 +31,28 @@ public class Pedido {
     private boolean pagoTarjeta;
     private int precio;
 
+    public Pedido() {
+        this.descripcion = "";
+        this.calleOrigen = "";
+        this.numeroCalleOrigen = "";
+        this.pisoOrigen = "";
+        this.dptoOrigen = "";
+        this.calleDestino = "";
+        this.numeroCalleDestino = "";
+        this.pisoDestino = "";
+        this.dptoDestino = "";
+        this.entregaInmediata = true;
+        this.horaEntrega = "";
+        this.minutoEntrega = "";
+        this.montoPagoEfectivo = 0;
+        this.vueltoPagoEfectivo = 0;
+        this.pagoTarjeta = false;
+        this.precio = 0;
+    }
+
+    
     public Pedido(String descripcion, String calleOrigen, String numeroCalleOrigen, String calleDestino, String numeroCalleDestino) {
+        this();
         this.descripcion = descripcion;
 
         this.calleOrigen = calleOrigen;
@@ -190,9 +211,31 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" + "descripcion=" + descripcion + '}';
+        String s;
+        s = "Pedido: " + "\n"+ "\tDescripcion: " + descripcion + '\n' + 
+                "\tOrigen: \n" + 
+                "\n"+ "\t\tCalle origen: " + calleOrigen + '\n' + 
+                "\n"+ "\t\tNumero origen: " + numeroCalleOrigen + '\n' + 
+                "\n"+ "\tPis origen: " + pisoOrigen + '\n' + 
+                "\n"+ "\t\tDepto origen: " + dptoOrigen + '\n' +
+                
+                "\tDestino: \n" + 
+                "\n"+ "\t\tCalle destino: " + calleDestino + '\n' + 
+                "\n"+ "\t\tNumero destino: " + numeroCalleDestino + '\n' + 
+                "\n"+ "\t\tPis destino: " + pisoDestino + '\n' + 
+                "\n"+ "\t\tDepto destino: " + dptoDestino + '\n' +
+                
+                "\n";
+        if(!entregaInmediata){
+            s += "\n"+ "\tHora entrega: " + horaEntrega + '\n' + 
+                "\n"+ "\tMinuto entrega: " + minutoEntrega + '\n';
+        }    
+        
+        s += "\n"+ "\tPrecio: " + precio + '\n';
+        if(!pagoTarjeta){
+           s += "\n"+ "\tVuelto: " + vueltoPagoEfectivo + '\n'; 
+        }   
+        return s;         
     }
-    
-    
     
 }

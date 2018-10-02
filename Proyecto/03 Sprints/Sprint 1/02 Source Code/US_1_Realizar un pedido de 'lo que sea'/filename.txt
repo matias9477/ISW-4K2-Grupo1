@@ -1,0 +1,22 @@
+Pedido: 
+	Descripcion: comidao
+	Origen: 
+
+		Calle origen: parmino
+
+		Numero origen: 50
+
+	Pis origen: 4
+
+		Depto origen: a
+	Destino: 
+
+		Calle destino: raflel
+
+		Numero destino: 600
+
+		Pis destino: 4
+
+		Depto destino: a
+
+
