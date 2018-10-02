@@ -20,11 +20,21 @@ import java.util.logging.Logger;
 public class Almacenador {
     
     public static void guardarArchivoTexto (String nombreArchivo, String archivo){
-        try (PrintWriter out = new PrintWriter(nombreArchivo)) {
-            out.println(archivo);
-        } catch (FileNotFoundException ex) {
-            System.out.println("Error en el grabado");;
-        }
+//        try (PrintWriter out = new PrintWriter(nombreArchivo)) {
+//            out.println(archivo);
+//        } catch (FileNotFoundException ex) {
+//            System.out.println("Error en el grabado");;
+//        }
+        
+        try {
+			File file = new File(nombreArchivo);
+			FileWriter fileWriter = new FileWriter(file);
+			fileWriter.write(archivo);
+			fileWriter.flush();
+			fileWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
     
 }
