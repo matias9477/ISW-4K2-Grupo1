@@ -27,20 +27,13 @@ public class Pedido {
     private String minutoEntrega;
     private int montoPagoEfectivo;
 
-    public Pedido(String descripcion, File imagen, String calleOrigen, String numeroCalleOrigen, String pisoOrigen, String dptoOrigen, String calleDestino, String numeroCalleDestino, String pisoDestino, String dptoDestino, String horaEntrega, String minutoEntrega, int montoPagoEfectivo) {
+    public Pedido(String descripcion, File imagen, String calleOrigen, String numeroCalleOrigen, String calleDestino, String numeroCalleDestino) {
         this.descripcion = descripcion;
         this.imagen = imagen;
         this.calleOrigen = calleOrigen;
         this.numeroCalleOrigen = numeroCalleOrigen;
-        this.pisoOrigen = pisoOrigen;
-        this.dptoOrigen = dptoOrigen;
         this.calleDestino = calleDestino;
         this.numeroCalleDestino = numeroCalleDestino;
-        this.pisoDestino = pisoDestino;
-        this.dptoDestino = dptoDestino;
-        this.horaEntrega = horaEntrega;
-        this.minutoEntrega = minutoEntrega;
-        this.montoPagoEfectivo = montoPagoEfectivo;
     }
 
     public int getID() {

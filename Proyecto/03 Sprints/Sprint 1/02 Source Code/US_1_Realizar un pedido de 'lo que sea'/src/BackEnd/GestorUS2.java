@@ -1,7 +1,6 @@
 package BackEnd;
 
 
-import BackEnd.ValidadorTarjeta;
 import java.io.File;
 
 /*
@@ -29,11 +28,42 @@ public class GestorUS2 {
     private String horaEntrega;
     private String minutoEntrega;
     private int montoPagoEfectivo;
+    private Pedido pedido;
+    private boolean validacionCredito;
+    private boolean validacionEfectivo;
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public boolean isValidacionCredito() {
+        return validacionCredito;
+    }
+
+    public void setValidacionCredito(boolean validacionCredito) {
+        this.validacionCredito = validacionCredito;
+    }
+
+    public boolean isValidacionEfectivo() {
+        return validacionEfectivo;
+    }
+
+    public void setValidacionEfectivo(boolean validacionEfectivo) {
+        this.validacionEfectivo = validacionEfectivo;
+    }
     
 
     public GestorUS2() {
         validador=new ValidadorTarjeta();
 
+    }
+    
+    public void crearNuevoPedido(){
+        pedido=new Pedido(descripcion,imagen,calleOrigen,numeroCalleOrigen,calleDestino,numeroCalleDestino);
     }
 
     public ValidadorTarjeta getValidador() {
