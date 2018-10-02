@@ -630,7 +630,15 @@ public class UIPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_siguiente_1ActionPerformed
 
     private void btn_siguiente_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_siguiente_2ActionPerformed
-this.tab_pedido.setSelectedIndex(2);        // TODO add your handling code here:
+        if ("".equals(this.txt_calleOrigen.getText())) {
+            JFrame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame,
+                    "Debes llenar todos los campos obligatorios",
+                    "Cuidado",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+        else this.tab_pedido.setSelectedIndex(2);
+
     }//GEN-LAST:event_btn_siguiente_2ActionPerformed
 
     private void radio_elegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_elegirActionPerformed
