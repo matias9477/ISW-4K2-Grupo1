@@ -1,7 +1,6 @@
 package BackEnd;
 
 
-import BackEnd.ValidadorTarjeta;
 import java.io.File;
 
 /*
@@ -28,13 +27,149 @@ public class GestorUS2 {
     private String dptoDestino;
     private String horaEntrega;
     private String minutoEntrega;
+    private int montoAPagar; //precio del bien mas el precio de envio
     private int montoPagoEfectivo;
+    private Pedido pedido;
+    private boolean validacionCredito;
+    private boolean validacionEfectivo;
+    private boolean entregaInmediata;
+       
+    
+    public GestorUS2() {
+        this.descripcion = "";
+        this.calleOrigen = "";
+        this.numeroCalleOrigen = "";
+        this.pisoOrigen = "";
+        this.dptoOrigen = "";
+        this.calleDestino = "";
+        this.numeroCalleDestino = "";
+        this.pisoDestino = "";
+        this.dptoDestino = "";
+        this.entregaInmediata = true;
+        this.horaEntrega = "";
+        this.minutoEntrega = "";
+        this.montoPagoEfectivo = 0;
+        validador=new ValidadorTarjeta();
+        entregaInmediata=false;
+    }
+    
+    public void guardar(){
+            Almacenador.guardarArchivoTexto("Pedido.txt", this.toString());
+    }
+
+    @Override
+    public String toString() {
+        String s;
+        s = "Pedido: " + "\n"+ "\tDescripcion: " + descripcion + '\n' + 
+                "\tOrigen: \n" + 
+                "\n"+ "\t\tCalle origen: " + calleOrigen + '\n' + 
+                "\n"+ "\t\tNumero origen: " + numeroCalleOrigen + '\n' + 
+                "\n"+ "\tPis origen: " + pisoOrigen + '\n' + 
+                "\n"+ "\t\tDepto origen: " + dptoOrigen + '\n' +
+                
+                "\tDestino: \n" + 
+                "\n"+ "\t\tCalle destino: " + calleDestino + '\n' + 
+                "\n"+ "\t\tNumero destino: " + numeroCalleDestino + '\n' + 
+                "\n"+ "\t\tPis destino: " + pisoDestino + '\n' + 
+                "\n"+ "\t\tDepto destino: " + dptoDestino + '\n' +
+                
+                "\n";
+        if(!entregaInmediata){
+            s += "\n"+ "\tHora entrega: " + horaEntrega + '\n' + 
+                "\n"+ "\tMinuto entrega: " + minutoEntrega + '\n';
+        }    
+        
+//        s += "\n"+ "\tPrecio: " + precio + '\n';
+//        if(!pagoTarjeta){
+//           s += "\n"+ "\tVuelto: " + vueltoPagoEfectivo + '\n'; 
+//        }   
+        return s;       
+    }
+       
+       
+        public void crearNuevoPedido(){
+        pedido=new Pedido(descripcion,calleOrigen,numeroCalleOrigen,calleDestino,numeroCalleDestino);
+            if (imagen!=null) {
+                pedido.setImagen(imagen);
+            }
+            if (pisoOrigen!=null) {
+                pedido.setPisoOrigen(pisoOrigen);
+            }
+            if (dptoOrigen!=null) {
+                pedido.setDptoOrigen(dptoOrigen);
+            }
+                        if (pisoDestino!=null) {
+                pedido.setPisoDestino(pisoDestino);
+            }
+            if (dptoDestino!=null) {
+                pedido.setDptoDestino(dptoDestino);
+            }
+            if(!entregaInmediata){
+                pedido.setHoraEntrega(horaEntrega);
+                pedido.setMinutoEntrega(minutoEntrega);
+            }
+            else{
+                pedido.setEntregaInmediata(true);
+            }
+            
+            
+            //pago
+            if (validacionCredito) {
+                pedido.setPrecio(montoAPagar);
+                pedido.setPagoTarjeta(true);
+            }
+            else{
+                pedido.setPrecio(montoAPagar);
+                pedido.setMontoPagoEfectivo(montoPagoEfectivo);
+                pedido.setVueltoPagoEfectivo(montoAPagar-montoPagoEfectivo);
+            }
+            
+    }
+    public void marcarComoEntregaInmediata()
+    {
+        entregaInmediata=true;
+    }
+
+    public int getMontoAPagar() {
+        return montoAPagar;
+    }
+
+    public void setMontoAPagar(int montoAPagar) {
+        this.montoAPagar = montoAPagar;
+    }
+    
+    public void guardarHoraEnvio(String hora, String minuto){
+        horaEntrega=hora;
+        minutoEntrega=minuto;
+    }
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public boolean isValidacionCredito() {
+        return validacionCredito;
+    }
+
+    public void setValidacionCredito(boolean validacionCredito) {
+        this.validacionCredito = validacionCredito;
+    }
+
+    public boolean isValidacionEfectivo() {
+        return validacionEfectivo;
+    }
+
+    public void setValidacionEfectivo(boolean validacionEfectivo) {
+        this.validacionEfectivo = validacionEfectivo;
+    }
     
 
-    public GestorUS2() {
-        validador=new ValidadorTarjeta();
+ 
 
-    }
+
 
     public ValidadorTarjeta getValidador() {
         return validador;

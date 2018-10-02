@@ -12,7 +12,7 @@ import java.io.File;
  * @author Matia
  */
 public class Pedido {
-    private int ID;
+
         private String descripcion;
     private File imagen;
     private String calleOrigen;
@@ -23,33 +23,87 @@ public class Pedido {
     private String numeroCalleDestino;
     private String pisoDestino;
     private String dptoDestino;
+    private boolean entregaInmediata;
     private String horaEntrega;
     private String minutoEntrega;
     private int montoPagoEfectivo;
+    private int vueltoPagoEfectivo;
+    private boolean pagoTarjeta;
+    private int precio;
 
-    public Pedido(String descripcion, File imagen, String calleOrigen, String numeroCalleOrigen, String pisoOrigen, String dptoOrigen, String calleDestino, String numeroCalleDestino, String pisoDestino, String dptoDestino, String horaEntrega, String minutoEntrega, int montoPagoEfectivo) {
+    public Pedido() {
+        this.descripcion = "";
+        this.calleOrigen = "";
+        this.numeroCalleOrigen = "";
+        this.pisoOrigen = "";
+        this.dptoOrigen = "";
+        this.calleDestino = "";
+        this.numeroCalleDestino = "";
+        this.pisoDestino = "";
+        this.dptoDestino = "";
+        this.entregaInmediata = true;
+        this.horaEntrega = "";
+        this.minutoEntrega = "";
+        this.montoPagoEfectivo = 0;
+        this.vueltoPagoEfectivo = 0;
+        this.pagoTarjeta = false;
+        this.precio = 0;
+    }
+
+    
+    public Pedido(String descripcion, String calleOrigen, String numeroCalleOrigen, String calleDestino, String numeroCalleDestino) {
+        this();
         this.descripcion = descripcion;
-        this.imagen = imagen;
+
         this.calleOrigen = calleOrigen;
         this.numeroCalleOrigen = numeroCalleOrigen;
-        this.pisoOrigen = pisoOrigen;
-        this.dptoOrigen = dptoOrigen;
         this.calleDestino = calleDestino;
         this.numeroCalleDestino = numeroCalleDestino;
-        this.pisoDestino = pisoDestino;
-        this.dptoDestino = dptoDestino;
-        this.horaEntrega = horaEntrega;
-        this.minutoEntrega = minutoEntrega;
-        this.montoPagoEfectivo = montoPagoEfectivo;
+        this.pagoTarjeta=false;
+        this.entregaInmediata=false;
     }
 
-    public int getID() {
-        return ID;
+    public int getPrecio() {
+        return precio;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
+
+    public boolean isEntregaInmediata() {
+        return entregaInmediata;
+    }
+
+    public int getVueltoPagoEfectivo() {
+        return vueltoPagoEfectivo;
+    }
+
+    public boolean isPagoTarjeta() {
+        return pagoTarjeta;
+    }
+
+    public void setEntregaInmediata(boolean entregaInmediata) {
+        this.entregaInmediata = entregaInmediata;
+    }
+
+    public void setVueltoPagoEfectivo(int vueltoPagoEfectivo) {
+        this.vueltoPagoEfectivo = vueltoPagoEfectivo;
+    }
+
+    public void setPagoTarjeta(boolean pagoTarjeta) {
+        this.pagoTarjeta = pagoTarjeta;
+    }
+    
+    
+    
+    public void marcarComoEntregaInmediata(){
+        entregaInmediata=true;
+    }
+    public void marcarComoPagado(){
+        pagoTarjeta=true;
+    }
+
 
     public String getDescripcion() {
         return descripcion;
@@ -154,6 +208,34 @@ public class Pedido {
     public void setMontoPagoEfectivo(int montoPagoEfectivo) {
         this.montoPagoEfectivo = montoPagoEfectivo;
     }
-    
+
+    @Override
+    public String toString() {
+        String s;
+        s = "Pedido: " + "\n"+ "\tDescripcion: " + descripcion + '\n' + 
+                "\tOrigen: \n" + 
+                "\n"+ "\t\tCalle origen: " + calleOrigen + '\n' + 
+                "\n"+ "\t\tNumero origen: " + numeroCalleOrigen + '\n' + 
+                "\n"+ "\tPis origen: " + pisoOrigen + '\n' + 
+                "\n"+ "\t\tDepto origen: " + dptoOrigen + '\n' +
+                
+                "\tDestino: \n" + 
+                "\n"+ "\t\tCalle destino: " + calleDestino + '\n' + 
+                "\n"+ "\t\tNumero destino: " + numeroCalleDestino + '\n' + 
+                "\n"+ "\t\tPis destino: " + pisoDestino + '\n' + 
+                "\n"+ "\t\tDepto destino: " + dptoDestino + '\n' +
+                
+                "\n";
+        if(!entregaInmediata){
+            s += "\n"+ "\tHora entrega: " + horaEntrega + '\n' + 
+                "\n"+ "\tMinuto entrega: " + minutoEntrega + '\n';
+        }    
+        
+        s += "\n"+ "\tPrecio: " + precio + '\n';
+        if(!pagoTarjeta){
+           s += "\n"+ "\tVuelto: " + vueltoPagoEfectivo + '\n'; 
+        }   
+        return s;         
+    }
     
 }
