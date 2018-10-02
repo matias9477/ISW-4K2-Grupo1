@@ -1,21 +1,21 @@
 Pedido: 
-	Descripcion: comidao
+	Descripcion: un perrito
 	Origen: 
 
-		Calle origen: parmino
+		Calle origen: falsa
 
-		Numero origen: 50
+		Numero origen: 123
 
-	Pis origen: 4
+	Pis origen: 
 
-		Depto origen: a
+		Depto origen: 
 	Destino: 
 
-		Calle destino: raflel
+		Calle destino: evergreen
 
-		Numero destino: 600
+		Numero destino: 123
 
-		Pis destino: 4
+		Pis destino: 
 
-		Depto destino: a
+		Depto destino: 
 

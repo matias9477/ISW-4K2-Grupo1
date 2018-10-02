@@ -22,12 +22,12 @@ public class Main {
         GestorUS2 gestor=new GestorUS2();
         UIPedido windows = new UIPedido(gestor);
         windows.show();
-        String card="4770539000089000";
-        ValidadorTarjeta v=new ValidadorTarjeta();
-        if(v.validarTarjeta(card))
-        {
-            System.out.println("es valida");
-        }
+//        String card="4770539000089000";
+//        ValidadorTarjeta v=new ValidadorTarjeta();
+//        if(v.validarTarjeta(card))
+//        {
+//            System.out.println("es valida");
+//        }
     }
     
 }

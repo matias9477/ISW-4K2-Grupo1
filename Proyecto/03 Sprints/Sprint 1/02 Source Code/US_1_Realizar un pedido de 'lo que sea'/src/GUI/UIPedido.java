@@ -914,12 +914,22 @@ this.btn_validarTarjeta.setEnabled(false);
                 g.setMontoAPagar(Integer.parseInt(this.txt_precioBien.getText())+30);
                 g.setMontoPagoEfectivo(Integer.parseInt(this.txt_abonoEfectivo.getText()));
                 g.crearNuevoPedido();
+                JFrame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame,
+                    "Pedido registrado con éxito",
+                    "Felicidades",
+                    JOptionPane.INFORMATION_MESSAGE);
                 
 
             } else //si es en tarjeta
             {
                 g.setMontoAPagar(Integer.parseInt(this.txt_precioBien.getText())+30);
                 g.crearNuevoPedido();
+                            JFrame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame,
+                    "Pedido registrado con éxito",
+                    "Felicidades",
+                    JOptionPane.INFORMATION_MESSAGE);
 
             }
 
