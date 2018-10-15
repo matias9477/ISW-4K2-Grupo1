@@ -1,0 +1,11 @@
+https://www.geeksforgeeks.org/java-naming-conventions/
+
+https://unpocodejava.com/2012/03/16/buenas-practicas-de-codificacion-en-java/
+
+http://javaconfigmx.blogspot.com/2017/12/buenas-practicas-para-un-codigo-limpio.html
+
+https://www.javacodegeeks.com/2015/06/java-programming-tips-best-practices-beginners.html
+
+https://www.toptal.com/java/tips-and-practices
+
+https://www.ibm.com/developerworks/library/j-perry-writing-good-java-code/index.html
