@@ -60,29 +60,29 @@ public class GestorUS2 {
     @Override
     public String toString() {
         String s;
-        s = "Pedido: " + "\n"+ "\tDescripcion: " + descripcion + '\n' + 
-                "\tOrigen: \n" + 
-                "\n"+ "\t\tCalle origen: " + calleOrigen + '\n' + 
-                "\n"+ "\t\tNumero origen: " + numeroCalleOrigen + '\n' + 
-                "\n"+ "\tPis origen: " + pisoOrigen + '\n' + 
-                "\n"+ "\t\tDepto origen: " + dptoOrigen + '\n' +
+        s = "Pedido: " + " \r\n "+ "\tDescripcion: " + descripcion + " \r\n " + 
+                " \t Origen: \r\n " + 
+                " \r\n " + "\t \t Calle origen: " + calleOrigen + " \r\n " + 
+                " \r\n " + "\t \t Numero origen: " + numeroCalleOrigen + " \r\n " + 
+                " \r\n " + "\t \t Piso origen: " + pisoOrigen + " \r\n " + 
+                " \r\n " + "\t \t Dpto origen: " + dptoOrigen + " \r\n " +
                 
-                "\tDestino: \n" + 
-                "\n"+ "\t\tCalle destino: " + calleDestino + '\n' + 
-                "\n"+ "\t\tNumero destino: " + numeroCalleDestino + '\n' + 
-                "\n"+ "\t\tPis destino: " + pisoDestino + '\n' + 
-                "\n"+ "\t\tDepto destino: " + dptoDestino + '\n' +
+                " \t Destino: \r\n " + 
+                " \r\n " + " \t \t Calle destino: " + calleDestino + " \r\n " + 
+                " \r\n " + " \t \t Numero destino: " + numeroCalleDestino + " \r\n " + 
+                " \r\n " + " \t \t Piso destino: " + pisoDestino + " \r\n " + 
+                " \r\n " + " \t \t Dpto destino: " + dptoDestino + " \r\n " +
                 
-                "\n";
+                " \r\n ";
         if(!entregaInmediata){
-            s += "\n"+ "\tHora entrega: " + horaEntrega + '\n' + 
-                "\n"+ "\tMinuto entrega: " + minutoEntrega + '\n';
+            s += " \r\n " + " \t Hora entrega: " + horaEntrega + ":" + 
+                 minutoEntrega + " \r\n ";
         }    
         
-//        s += "\n"+ "\tPrecio: " + precio + '\n';
-//        if(!pagoTarjeta){
-//           s += "\n"+ "\tVuelto: " + vueltoPagoEfectivo + '\n'; 
-//        }   
+        s += "\r\n"+ "\tMonto a pagar: " + montoAPagar + '\n';
+        if(validacionEfectivo){
+           s += "\r\n"+ "\tMonto a pagar efectivo: " + montoPagoEfectivo + "\r\n"; 
+        }   
         return s;       
     }
        

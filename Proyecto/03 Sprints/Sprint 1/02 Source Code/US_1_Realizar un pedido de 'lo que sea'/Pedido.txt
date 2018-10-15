@@ -1,21 +1,29 @@
-Pedido: 
-	Descripcion: un perrito
-	Origen: 
+Pedido:  
+ 	Descripcion: vmoifitia 
+  	 Origen: 
+  
+ 	 	 Calle origen: wer 
+  
+ 	 	 Numero origen: 5 
+  
+ 	 	 Piso origen: 5 
+  
+ 	 	 Dpto origen: 5 
+  	 Destino: 
+  
+  	 	 Calle destino: 5 
+  
+  	 	 Numero destino: 5 
+  
+  	 	 Piso destino: 5 
+  
+  	 	 Dpto destino: 5 
+  
+  
+  	 Hora entrega: 8 
+  
+  	 Minuto entrega: 00 
+ 
+	Monto a pagar: 40
 
-		Calle origen: falsa
-
-		Numero origen: 123
-
-	Pis origen: 
-
-		Depto origen: 
-	Destino: 
-
-		Calle destino: evergreen
-
-		Numero destino: 123
-
-		Pis destino: 
-
-		Depto destino: 
-
+	Monto a pagar efectivo: 110

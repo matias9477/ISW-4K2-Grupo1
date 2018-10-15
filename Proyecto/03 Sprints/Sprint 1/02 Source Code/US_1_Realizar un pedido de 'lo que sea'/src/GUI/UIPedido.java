@@ -904,7 +904,6 @@ this.btn_validarTarjeta.setEnabled(false);
                         "Cuidado",
                         JOptionPane.WARNING_MESSAGE);
             }
-            g.guardar();
             
         }
 
@@ -940,6 +939,7 @@ this.btn_validarTarjeta.setEnabled(false);
                     "Algo anda mal",
                     JOptionPane.WARNING_MESSAGE);
         }
+        g.guardar();
     }//GEN-LAST:event_btn_confirmarActionPerformed
 
     /**
