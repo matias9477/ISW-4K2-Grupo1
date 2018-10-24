@@ -15,6 +15,7 @@
 
 ## Reglas de nombrado:
 | Nombre del Ítem de Configuración | Regla de Nombrado |
+| --- | --- |
 | User Stories | US_[numero]_[NombreUS] |
 | Clases | [NombreClase].java |
 | Interfaces | I[NombreInterfaz].java |
