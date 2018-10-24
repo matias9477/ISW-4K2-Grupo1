@@ -22,3 +22,4 @@
 | Product Backlog | Product_Backlog.docx |
 | Codigo Fuente Sprint | [NombreClase].java |
 | Sprint Backlog | Sprint_[nroSprint]_Backlog |
+| Trabajos Prácticos | TP_[nroTp]_[NombreTp].docx |
